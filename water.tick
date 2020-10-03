@@ -1,0 +1,10 @@
+dbrp "water_data"."autogen"
+
+// Select the temperatures measurements
+stream
+    |from()
+        .measurement('water_data')
+    |window()
+        .period(5d)
+        .every(2h)
+    |httpOut('httpout')
