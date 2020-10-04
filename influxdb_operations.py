@@ -41,9 +41,6 @@ def get_db_ready(db_name='water_data'):
     # Create a database called "WaterTrainingdata"
     client.create_database(db_name)
     
-    # Confirm that the database data "WaterTrainingdata" exist
-    print(client.get_list_database())
-    
     # Make use of the database
     client.switch_database(db_name)
     
