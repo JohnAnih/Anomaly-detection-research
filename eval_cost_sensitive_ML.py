@@ -1,9 +1,9 @@
-# for saving and loading ml models
-from pickle import dump
-from pickle import load
-
 # data visualization
 import matplotlib.pyplot as plt
+
+# save and load ml models
+from pickle import dump
+from pickle import load
 
 # data and numeric analysis
 import pandas as pd
@@ -409,3 +409,37 @@ def run_models(X,
         
     return f1_scores, f0_5_scores, sensitivity, specificity
         
+        
+        
+
+def save_model(model, filename = 'finalized_model.sav'):
+    """
+    save_model saves the finalized ML model for later use.
+
+    Parameters
+    ----------
+    model : model
+        The model to save
+    filename : str, optional
+        name to save the model, by default 'finalized_model.sav'
+    """    ""
+    dump(model, open(filename, 'wb'))
+    
+    
+    
+
+def load_model(filename = 'finalized_model.sav'):
+    """
+    load_model loads the already saved model
+
+    Parameters
+    ----------
+    filename : str, optional
+        name of the model you want to load, by default 'finalized_model.sav'
+
+    Returns
+    -------
+    model
+        Loads the model.
+    """    ""
+    return load(open(filename, 'rb'))

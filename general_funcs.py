@@ -1,26 +1,16 @@
-# data and numeric analysis
+# data analysis
 import pandas as pd
-import numpy as np
 
 # data visualization
 import matplotlib.pyplot as plt
-import seaborn as sns
 
 # machine learning
-from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
-from sklearn.impute import SimpleImputer
 from sklearn.model_selection import train_test_split
 
-from sklearn.pipeline import Pipeline
 
 from sklearn.feature_selection import (SelectKBest, 
-                                       mutual_info_classif, 
-                                       f_classif)
-
-
-# statistical analysis
-from statsmodels.graphics import tsaplots
+                                       mutual_info_classif)
 
 # Import augmented dicky-fuller test function
 from statsmodels.tsa.stattools import adfuller
@@ -34,11 +24,10 @@ def get_dataset(filename):
     filename : str
         filename
     """    ""
-    df = pd.read_excel(filename, 
-                       index_col ="Time", 
-                       parse_dates=True)
+    return pd.read_excel(filename, 
+                         index_col ="Time", 
+                         parse_dates=True)
     
-    return df
 
 
 
@@ -56,9 +45,7 @@ def check_class_dist(df, target):
     value_counts
         value counts of the target variable
     """    ""
-    class_dist = df[target].value_counts(normalize=True)*100
-    return class_dist
-
+    return df[target].value_counts(normalize=True)*100
 
 
 
@@ -109,10 +96,7 @@ def interpolate_df(df, interpolation_type = 'zero'):
         DataFrame with no missing values
     """    ""
 
-    # Interpolate the missing values
-    df_interp = df.interpolate(interpolation_type)
-    
-    return df_interp
+    return df.interpolate(interpolation_type)
 
 
 

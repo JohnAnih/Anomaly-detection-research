@@ -1,16 +1,11 @@
-from pickle import dump
-from pickle import load
 
-import urllib.request
+import matplotlib.pyplot as plt
 
-import time
+from sklearn.ensemble import RandomForestClassifier
 
-from sklearn.metrics import f1_score
-
-from general_funcs import *
+from sklearn.metrics import classification_report
 
 from general_funcs import (get_dataset, 
-                           check_class_dist, 
                            interpolate_df, 
                            visualize_time_series_vars, 
                            get_holdout_set, 
@@ -24,8 +19,7 @@ from eval_cost_sensitive_ML import (run_models,
 
 from eval_oversampling_methods import run_oversampling_models
 
-from influxdb_operations import (write_points_to_influxdb, 
-                                 transform_to_dataframe)
+from influxdb_operations import automate_data_process
 
 # matplotlib style
 plt.style.use("fivethirtyeight") 
@@ -122,44 +116,9 @@ test_inputs = get_stationary_df(df= test_inputs)
 # make predictions
 predictions = model.predict(test_inputs)
 
-# check F1 scire
-f1_score(y_test, predictions)
+# Evaluate the model on unseen data
+print(classification_report(test_inputs, predictions))
 
 
-# save model
-filename = 'finalized_model.sav'
-dump(model, open(filename, 'wb'))
-
-
-
-
-# load saved model
-loaded_model = load(open(filename, 'rb'))
-
-
-while True:
-    
-    url = write_points_to_influxdb(X_test=test_inputs, y_test=y_test)
-    recent_1 = urllib.request.urlopen(url).read()
-    recent_2 = urllib.request.urlopen(url).read()
-    
-    while recent_1 == recent_2:
-        print("No New Data")
-        time.sleep(5)
-        recent_2 = urllib.request.urlopen(url).read()
-        
-        data = transform_to_dataframe(recent_2)
-        
-        x= data.drop(target, axis=1)
-        
-        y_true= data[target]
-        
-        # fill missing values by linear interpolation
-        x = interpolate_df(df=x)
-        
-        # make the time series stationary
-        x = get_stationary_df(df= x)
-        
-        yhat = loaded_model.predict(x)
-        
-        f1_score(y_true, yhat)
+# deploy and test on streamed data
+automate_data_process(model=model, inputs=test_inputs, output=y_test)
