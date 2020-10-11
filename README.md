@@ -19,7 +19,7 @@ Finally, with Influxdb and Kapacitor the data was ingested and streamed to gener
 ## Frameworks used for this project <a name = "Libraries_used"></a>
 
 The following libraries have been used in Python
-* pandas and Numpy for data analysis and numeric computation.
+* pandas and Numpy for data analysis and numeric analysis.
 * influxdb for ingesting and writing data points.
 * Kapacitor for streaming and loading new data points
 * sklearn for classical machine learning.
@@ -31,7 +31,7 @@ The following libraries have been used in Python
 
 ### Prerequisites
 
-You need to have influxDB installed to properly duplicate the environment. Learn more here: https://portal.influxdata.com/downloads/
+You need to have influxDB and Kapacitor installed to properly duplicate the environment. Learn more here: https://portal.influxdata.com/downloads/
 
 
 
