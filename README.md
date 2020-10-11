@@ -4,7 +4,8 @@
 
 - [About](#about)
 - [Frameworks used for this project](#Libraries_used)
-- [Usage](#usage)
+- [Prerequisitest](#Prerequisites)
+- [Installation](#installation)
 
 ## About <a name = "about"></a>
 
@@ -29,13 +30,13 @@ The following libraries have been used in Python
 
 
 
-### Prerequisites
+### Prerequisites <a name = "Prerequisites"></a>
 
 You need to have influxDB and Kapacitor installed to properly duplicate the environment. Learn more here: https://portal.influxdata.com/downloads/
 
 
 
-### Installing
+### Installing <a name = "installation"></a>
 
 To duplicate the enviornment used:
 
