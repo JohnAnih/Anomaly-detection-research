@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 import urllib.request
 from sklearn.metrics import classification_report
 from influxdb import InfluxDBClient
@@ -21,7 +20,7 @@ def get_db_ready(db_name='water_data'):
     Parameters
     ----------
     db_name : str, optional
-        [description], by default 'water_data'
+        Name of the database, by default 'water_data'
 
     Returns
     -------

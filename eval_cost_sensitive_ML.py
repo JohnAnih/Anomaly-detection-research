@@ -288,7 +288,7 @@ def verbosity_for_summary_stats(i, scores, names):
     names : str
         position in the loop
     """    ""
-    # summarize and store
+    # summarize and print message to the user
     print('> F1 Score %s %.3f (%.3f)' % (names[i], 
                                          np.mean(scores['test_f1_score']), 
                                          np.std(scores['test_f1_score'])))
