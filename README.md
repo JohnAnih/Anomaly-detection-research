@@ -22,10 +22,10 @@ The following libraries have been used in Python
 * pandas and Numpy for data analysis and numeric analysis.
 * influxdb for ingesting and writing data points.
 * Kapacitor for streaming and loading new data points
-* sklearn for classical machine learning.
+* scikit-learn for classical machine learning.
 * matplotlib for plotting and visualization
 * statsmodels for adfuller test, autocorrelation and partial autocorrelation
-* imblearn for investing oversampling methods with the best performing model.
+* imbalanced-learn for investing oversampling methods with the best performing model.
 
 
 
