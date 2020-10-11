@@ -40,5 +40,5 @@ You need to have influxDB and Kapacitor installed to properly duplicate the envi
 To duplicate the enviornment used:
 
 ```
-pip install requirements.txt
+pip install -r requirements.txt
 ```
