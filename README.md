@@ -4,7 +4,7 @@
 
 - [About](#about)
 - [Frameworks used for this project](#Libraries_used)
-- [Prerequisitest](#Prerequisites)
+- [prerequisites](#Prerequisites)
 - [Installation](#installation)
 
 ## About <a name = "about"></a>
@@ -36,7 +36,7 @@ You need to have influxDB and Kapacitor installed to properly duplicate the envi
 
 
 
-### Installing <a name = "installation"></a>
+### Installation <a name = "installation"></a>
 
 To duplicate the enviornment used:
 
