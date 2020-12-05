@@ -63,11 +63,16 @@ def visualize_time_series_vars(df, savefigure=False, file_name=None):
             layout=(3,3), 
             sharex=False, 
             sharey=False,  
-            fontsize=4, 
+            fontsize=7, 
             legend=True, 
             figsize=(16,10),
-            linewidth=0.2)
-
+            linewidth=1)
+    
+    plt.rcParams['xtick.labelsize']=10.5
+    plt.rcParams['ytick.labelsize']=10.5
+    
+    
+    
     # tighten the layout
     plt.tight_layout()
 
@@ -174,7 +179,11 @@ def perform_adfuller_test(df, verbose=True):
 
     for col_name in columns:
         res = adfuller(df[col_name])
-        adfuller_test[col_name] = {'ADF Statistic:': res[0], 'p-value:': res[1]}
+        adfuller_test[col_name] = {'ADF Statistic:': res[0], 
+                                   'p-value:': res[1], 
+                                   '1%': res[4]["1%"], 
+                                   '5%': res[4]["5%"],
+                                   '10%': res[4]["10%"]}
         
         if verbose:
             print(f'finished computing for the column: {col_name}')
